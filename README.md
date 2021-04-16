@@ -1,0 +1,2 @@
+# Bangkit-2021-Android-Learning-Path
+Bangkit is a Google-led academy designed to produce high-calibre, technical talent for world-class, Indonesian technology companies and startups. This year, Bangkit is offered as an approved Kampus Merdeka program supported by the Ministry of Education and Culture of the Republic of Indonesia. We’re enrolling up to 3,000 university students across 3 learning paths to help them grow in-demand skills in tech throughout the even semester of 2021.
