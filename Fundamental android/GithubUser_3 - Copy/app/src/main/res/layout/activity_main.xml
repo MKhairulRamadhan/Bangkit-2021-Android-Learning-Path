@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".view.MainActivity"
+        >
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="@drawable/background_splash"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/background_search"
+            android:iconifiedByDefault="false"
+            android:queryHint="Find user"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/background_date"
+            android:padding="6dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="30dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/kamis_12_03_2021"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchView" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_user_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            tools:listitem="@layout/user_list"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/image_not_Found"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:contentDescription="@string/image_not_found"
+            android:scaleType="centerCrop"
+            android:src="@drawable/search"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            app:layout_constraintVertical_bias="0.277" />
+
+        <TextView
+            android:id="@+id/text_not_found1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/user_not_found"
+            android:textColor="#FBD398"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_not_Found" />
+
+        <TextView
+            android:id="@+id/text_not_found2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/search_result_will_display_here"
+            android:textColor="#FBD398"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="visible"
+            app:layout_constraintTop_toBottomOf="@+id/text_not_found1" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar_main"
+            android:layout_width="92dp"
+            android:layout_height="93dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            app:layout_constraintVertical_bias="0.48000002"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/setting"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_baseline_settings_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/language_icon" />
+
+        <ImageView
+            android:id="@+id/favorite"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/love_full_white"
+            app:layout_constraintEnd_toStartOf="@+id/setting"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/favorite_icon" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/banner_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/background_widget"
+        android:padding="5dp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        tools:text="@string/favorite_user" />
+
+    <StackView
+        android:id="@+id/stack_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/banner_text"
+        android:loopViews="true"
+        tools:listitem="@layout/widget_item" />
+
+    <LinearLayout
+        android:id="@+id/userWidget_empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/banner_text"
+        android:background="@drawable/background_widget_body"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/image_no_search"
+            android:scaleType="centerInside"
+            android:src="@drawable/search"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/userWidget_tv_tittle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="Unfortunately.." />
+
+        <TextView
+            android:id="@+id/userWidget_tv_message"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            tools:text="Your doesn't have favorite users" />
+    </LinearLayout>
+</RelativeLayout>

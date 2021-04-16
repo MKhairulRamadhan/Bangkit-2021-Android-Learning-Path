@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pengguna Github</string>
+    <string name="user_image">Gambar Pengguna</string>
+    <string name="company">Perusahaan</string>
+    <string name="icon_company">Icon Perusahaan</string>
+    <string name="location">Lokasi</string>
+    <string name="icon_location">Icon lokasi</string>
+    <string name="amit_shekhar">Amit Shekhar</string>
+    <string name="amitshekhariitbhu">amitshekhariitbhu</string>
+    <string name="image_user">Gambar Pengguna</string>
+    <string name="follower">Pengikut</string>
+    <string name="following">Mengikuti</string>
+    <string name="_60">60</string>
+    <string name="_40">40</string>
+    <string name="_30">30</string>
+    <string name="username">Username</string>
+    <string name="icon_detail">icon detail</string>
+    <string name="repository">Repository</string>
+    <string name="button_back">tombol kembali</string>
+    <string name="bottom_image">tombol gambar</string>
+    <string name="top_image">gambar atas</string>
+    <string name="github_image">Gambar github</string>
+    <string name="kamis_12_03_2021">kamis, 12, 03,  2021</string>
+    <string name="user">pengguna</string>
+    <string name="image_not_found">gambar tidak ditemukan</string>
+    <string name="user_not_found">Pengguna Tidak Ditemukan</string>
+    <string name="search_result_will_display_here">Hasil pencarian akan ditampilkan disini</string>
+    <string name="has_no_followers">Tidak Memiliki Pengikut</string>
+    <string name="list_followers_will_display_here">Daftar pengikut akan ditampilkan disini</string>
+    <string name="has_no_following">Tidak Mengikuti</string>
+    <string name="list_following_will_display_here">Pengguna yang diikuti akan ditampilkan disini</string>
+    <string name="language_icon">icon bahasa</string>
+    <string name="app_setting">Pengaturan Aplikasi</string>
+    <string name="daily_reminder">Pengingat Harian</string>
+    <string name="language">Bahasa</string>
+    <string name="reminder_message">Cari pengguna Github</string>
+    <string name="favorite_icon">Icon Favorit</string>
+    <string name="favorite_user">Pengguna favorit</string>
+    <string name="appwidget_text">CONTOH</string>
+    <string name="add_widget">Tambha Widget</string>
+    <string name="no_favorite_users">Tidak ada user favorite</string>
+    <string name="image_no_search">Gambar tidak ada favorite</string>
+    <string name="type">Tipe</string>
+    <string name="unfortunately">Sayangnya..</string>
+    <string name="noFavorite">Kamu tidak punya user favorite</string>
+
+</resources>
