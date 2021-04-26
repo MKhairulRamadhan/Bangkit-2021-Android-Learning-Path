@@ -1,7 +1,25 @@
 <resources>
-    <string name="app_name">Submission 1 Movie Catalog</string>
+    <string name="app_name">Gopox Movie</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="movies">Movies</string>
     <string name="tv_show">Tv Shows</string>
+    <string name="_3h_30min">3h 30min</string>
+    <string name="_8_4">8.4</string>
+    <string name="_13">13+</string>
+    <string name="_2019">2019</string>
+    <string name="action_adventure_drama">Action, Adventure, Drama</string>
+    <string name="born_as_a_star">Born as a Star</string>
+    <string name="image_movie_tv">Image movie/Tv</string>
+    <string name="lorem_ipsum">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</string>
+    <string name="synopsis">Synopsis</string>
+    <string name="_4_8">4.8</string>
+    <string name="director">Director: </string>
+    <string name="genre">Genre: </string>
+    <string name="slash">|</string>
+    <string name="m_khairul_ramdhan">M Khairul Ramdhan</string>
+    <string name="action_advanture_music">Action, Advanture, Music</string>
+    <string name="image_top">image top</string>
+    <string name="image_button">image button</string>
+
 </resources>

@@ -1,13 +1,16 @@
-package com.mkhairulramadhan.submission1moviecatalog
+package com.mkhairulramadhan.submission1moviecatalog.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.mkhairulramadhan.submission1moviecatalog.view.fragment.MoviesFragment
+import com.mkhairulramadhan.submission1moviecatalog.R
+import com.mkhairulramadhan.submission1moviecatalog.view.fragment.TvShowFragment
 import com.mkhairulramadhan.submission1moviecatalog.databinding.ActivityMainBinding
 
 
-class MainActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
