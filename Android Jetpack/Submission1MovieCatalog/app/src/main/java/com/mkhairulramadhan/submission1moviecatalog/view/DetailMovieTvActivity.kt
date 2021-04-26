@@ -7,13 +7,16 @@ import com.bumptech.glide.Glide
 import com.flaviofaria.kenburnsview.KenBurnsView
 import com.mkhairulramadhan.submission1moviecatalog.databinding.ActivityDetailMovieTvBinding
 import com.mkhairulramadhan.submission1moviecatalog.model.MovieTvModel
+import com.mkhairulramadhan.submission1moviecatalog.view.fragment.MoviesFragment.Companion.TYPE_MOVIE
+import com.mkhairulramadhan.submission1moviecatalog.view.fragment.TvShowFragment.Companion.TYPE_TV
 import com.mkhairulramadhan.submission1moviecatalog.viewModel.DetailViewModel
 import java.util.*
 
 class DetailMovieTvActivity : AppCompatActivity() {
 
     companion object{
-        const val EXTRA_DATA = "extra_data"
+        const val EXTRA_ID = "extra_id"
+        const val EXTRA_TYPE = "extra_type"
     }
 
     private lateinit var binding: ActivityDetailMovieTvBinding
@@ -32,10 +35,20 @@ class DetailMovieTvActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         Objects.requireNonNull(supportActionBar)?.setDisplayHomeAsUpEnabled(true)
 
-        //get intent data
-        val data = intent.getParcelableExtra<MovieTvModel>(EXTRA_DATA)
-        data?.let { viewModel.setDetailMovieTv(it) }
-        bindDataDetail(viewModel.listDetailMovieTv)
+        //get intent and viewModel data
+        val id = intent.getStringExtra(EXTRA_ID)
+        val type = intent.getStringExtra(EXTRA_TYPE)
+        lateinit var dataDetail: MovieTvModel
+        if (type.equals(TYPE_MOVIE, ignoreCase = true)){
+            id?.let { viewModel.setMovieId(it) }
+            dataDetail = viewModel.getDetailMovie()
+        }else if(type.equals(TYPE_TV, ignoreCase = true)){
+            id?.let {viewModel.setTvId(it)}
+            dataDetail = viewModel.getDetailTv()
+        }
+
+        //bind to view
+        bindDataDetail(dataDetail)
     }
 
     private fun bindDataDetail(data: MovieTvModel) {

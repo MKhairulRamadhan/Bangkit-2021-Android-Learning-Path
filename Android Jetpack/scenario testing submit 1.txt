@@ -1,0 +1,8 @@
+Scenario:
+1. MovieTvViewModelText
+	> memuat data movie
+		> Memastikan data movie tidak null
+		> memastikan jumlah data movie sesuai dengan yang diharapkan
+	> memuat data tv
+		> memastikan data tv tidak null
+		> memastikan jumlah data tv sesuai dengan yang diharapkan

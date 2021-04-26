@@ -12,11 +12,16 @@ import com.mkhairulramadhan.submission1moviecatalog.adapter.MoviesTvAdapter
 import com.mkhairulramadhan.submission1moviecatalog.databinding.FragmentTvShowBinding
 import com.mkhairulramadhan.submission1moviecatalog.model.MovieTvModel
 import com.mkhairulramadhan.submission1moviecatalog.view.DetailMovieTvActivity
+import com.mkhairulramadhan.submission1moviecatalog.view.DetailMovieTvActivity.Companion.EXTRA_ID
+import com.mkhairulramadhan.submission1moviecatalog.view.DetailMovieTvActivity.Companion.EXTRA_TYPE
 import com.mkhairulramadhan.submission1moviecatalog.viewModel.MovieTvViewModel
 
 
 class TvShowFragment : Fragment() {
 
+    companion object{
+        const val TYPE_TV = "type_tv"
+    }
     private var _binding: FragmentTvShowBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: MovieTvViewModel
@@ -43,7 +48,8 @@ class TvShowFragment : Fragment() {
 
     private fun selectedTv(data: MovieTvModel){
         val moveDetail = Intent(context, DetailMovieTvActivity::class.java)
-        moveDetail.putExtra(DetailMovieTvActivity.EXTRA_DATA,data)
+        moveDetail.putExtra(EXTRA_ID,data.id)
+        moveDetail.putExtra(EXTRA_TYPE, TYPE_TV)
         startActivity(moveDetail)
     }
 

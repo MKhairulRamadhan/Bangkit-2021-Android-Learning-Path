@@ -12,7 +12,8 @@ import com.mkhairulramadhan.submission1moviecatalog.adapter.MoviesTvAdapter
 import com.mkhairulramadhan.submission1moviecatalog.databinding.FragmentMoviesBinding
 import com.mkhairulramadhan.submission1moviecatalog.model.MovieTvModel
 import com.mkhairulramadhan.submission1moviecatalog.view.DetailMovieTvActivity
-import com.mkhairulramadhan.submission1moviecatalog.view.DetailMovieTvActivity.Companion.EXTRA_DATA
+import com.mkhairulramadhan.submission1moviecatalog.view.DetailMovieTvActivity.Companion.EXTRA_ID
+import com.mkhairulramadhan.submission1moviecatalog.view.DetailMovieTvActivity.Companion.EXTRA_TYPE
 import com.mkhairulramadhan.submission1moviecatalog.viewModel.MovieTvViewModel
 
 class MoviesFragment : Fragment() {
@@ -57,11 +58,14 @@ class MoviesFragment : Fragment() {
 
     private fun selectedMovie(data: MovieTvModel){
         val moveDetail = Intent(context, DetailMovieTvActivity::class.java)
-        moveDetail.putExtra(EXTRA_DATA,data)
+        moveDetail.putExtra(EXTRA_ID,data.id)
+        moveDetail.putExtra(EXTRA_TYPE, TYPE_MOVIE)
         startActivity(moveDetail)
     }
 
     companion object {
+        const val TYPE_MOVIE = "type_movie"
+
         fun newInstance(): MoviesFragment {
             val fragment = MoviesFragment()
             val args = Bundle()
