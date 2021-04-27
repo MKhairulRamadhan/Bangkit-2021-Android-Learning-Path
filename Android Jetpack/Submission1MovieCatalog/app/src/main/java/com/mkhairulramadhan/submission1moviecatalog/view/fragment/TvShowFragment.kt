@@ -37,6 +37,9 @@ class TvShowFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //progressBar
+        binding.progressBar.visibility = View.VISIBLE
+
         //viewModel
         viewModel = ViewModelProvider(this)[MovieTvViewModel::class.java]
         val listTv = viewModel.getTvData()
@@ -58,6 +61,7 @@ class TvShowFragment : Fragment() {
         val adapter = MoviesTvAdapter()
         adapter.setData(listTv)
         binding.rvTv.adapter = adapter
+        binding.progressBar.visibility = View.GONE
 
         //when item selected
         adapter.setOnItemClickCallback(object : MoviesTvAdapter.OnItemClickCallback{

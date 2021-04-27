@@ -1,6 +1,7 @@
 package com.mkhairulramadhan.submission1moviecatalog.viewModel
 
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Test
 

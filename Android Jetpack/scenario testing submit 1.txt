@@ -6,3 +6,46 @@ Scenario:
 	> memuat data tv
 		> memastikan data tv tidak null
 		> memastikan jumlah data tv sesuai dengan yang diharapkan
+
+2. DetailViewModelTest
+	>  memuat detail movie
+		> memastikan data detail movie tidak null
+		> memastikan semua value dari detail movie sesuai yang diharapkan
+	> memuat detail tv
+		> memastikan data detail tv tidak null
+		> memastikan semua value dari detail tv sesuai yang diharapkan
+
+
+Scenario Instrumental testing:
+	> menampilkan data movie
+		> memastikan rv_movie dalam keadaan tampil
+		> Gulir rv_movie ke posisi data terakhir
+	> menampilkan data detail movie
+		> memastikan rv_movie dalam keadaan tampil
+		> memberikan tindakan klik pada data pertama di rv_movie
+		> memastikan TextView title_detail tampil sesuai yang diharapkan
+		> memastikan TextView director_detail tampil sesuai yang diharapkan
+		> memastikan TextView star_detail tampil sesuai yang diharapkan
+		> memastikan TextView genre_detail tampil sesuai yang diharapkan
+		> memastikan TextView year_detail tampil sesuai yang diharapkan
+		> memastikan TextView duration_detail tampil sesuai yang diharapkan
+		> memastikan TextView age_detail tampil sesuai yang diharapkan
+		> memastikan TextView synopsis_detail tampil sesuai yang diharapkan
+		> memastikan ImageView image_detail tampil sesuai yang diharapkan
+	> menampilkan data tv
+		> memberikan tindakan klik pada bottom navigation dengan id nav_id
+		> memastikan tv_tv dalam keadaan tampil
+		> gulir rv_tv ke posisi data terakhir
+	> menampilkan data detail tv
+		> memberikan tindakan klik pada bottom navigation dengan id nav_id
+		> memastikan tv_tv dalam keadaan tampil
+		> memberikan tindakan klik pada data pertama di rv_movie
+		> memastikan TextView title_detail tampil sesuai yang diharapkan
+		> memastikan TextView director_detail tampil sesuai yang diharapkan
+		> memastikan TextView star_detail tampil sesuai yang diharapkan
+		> memastikan TextView genre_detail tampil sesuai yang diharapkan
+		> memastikan TextView year_detail tampil sesuai yang diharapkan
+		> memastikan TextView duration_detail tampil sesuai yang diharapkan
+		> memastikan TextView age_detail tampil sesuai yang diharapkan
+		> memastikan TextView synopsis_detail tampil sesuai yang diharapkan
+		> memastikan ImageView image_detail tampil sesuai yang diharapkan

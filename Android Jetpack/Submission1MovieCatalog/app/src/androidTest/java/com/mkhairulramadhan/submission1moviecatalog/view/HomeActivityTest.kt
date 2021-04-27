@@ -2,14 +2,13 @@ package com.mkhairulramadhan.submission1moviecatalog.view
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.mkhairulramadhan.submission1moviecatalog.R
 import com.mkhairulramadhan.submission1moviecatalog.utils.DataDummy
-import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
 
@@ -29,9 +28,7 @@ class HomeActivityTest{
     @Test
     fun loadDetailMovie() {
         onView(withId(R.id.rv_movie)).check(matches(isDisplayed()))
-        onView(withId(R.id.rv_movie)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0,
-            ViewActions.click()
-        ))
+        onView(withId(R.id.rv_movie)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
         onView(withId(R.id.title_detail)).check(matches(isDisplayed()))
         onView(withId(R.id.title_detail)).check(matches(withText(dummyMovie[0].title)))
         onView(withId(R.id.director_detail)).check(matches(isDisplayed()))
@@ -53,18 +50,16 @@ class HomeActivityTest{
 
     @Test
     fun loadTvs(){
-        onView(withText("Tv Shows")).perform(ViewActions.click())
+        onView(withId(R.id.nav_tv)).perform(click())
         onView(withId(R.id.rv_tv)).check(matches(isDisplayed()))
         onView(withId(R.id.rv_tv)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(dummyTv.size))
     }
 
     @Test
     fun loadDetailTv() {
-        onView(withText("Tv Shows")).perform(ViewActions.click())
+        onView(withId(R.id.nav_tv)).perform(click())
         onView(withId(R.id.rv_tv)).check(matches(isDisplayed()))
-        onView(withId(R.id.rv_tv)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0,
-            ViewActions.click()
-        ))
+        onView(withId(R.id.rv_tv)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
         onView(withId(R.id.title_detail)).check(matches(isDisplayed()))
         onView(withId(R.id.title_detail)).check(matches(withText(dummyTv[0].title)))
         onView(withId(R.id.director_detail)).check(matches(isDisplayed()))

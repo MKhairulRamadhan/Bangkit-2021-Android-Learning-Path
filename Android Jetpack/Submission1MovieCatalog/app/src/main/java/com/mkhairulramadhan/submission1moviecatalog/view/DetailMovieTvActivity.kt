@@ -1,10 +1,11 @@
 package com.mkhairulramadhan.submission1moviecatalog.view
 
 import android.os.Bundle
+import android.view.View
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.flaviofaria.kenburnsview.KenBurnsView
 import com.mkhairulramadhan.submission1moviecatalog.databinding.ActivityDetailMovieTvBinding
 import com.mkhairulramadhan.submission1moviecatalog.model.MovieTvModel
 import com.mkhairulramadhan.submission1moviecatalog.view.fragment.MoviesFragment.Companion.TYPE_MOVIE
@@ -26,6 +27,9 @@ class DetailMovieTvActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailMovieTvBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //progressBar
+        binding.progressBar.visibility = View.VISIBLE
 
         //viewModel
         viewModel = ViewModelProvider(this)[DetailViewModel::class.java]
@@ -63,6 +67,7 @@ class DetailMovieTvActivity : AppCompatActivity() {
             genreDetail.text = data.tag
             toolbar.title = data.title
             imageDetail.loadImage(data.image)
+            progressBar.visibility = View.GONE
         }
     }
 
@@ -71,7 +76,7 @@ class DetailMovieTvActivity : AppCompatActivity() {
         return true
     }
 
-    private fun KenBurnsView.loadImage(data: Int){
+    private fun ImageView.loadImage(data: Int){
         Glide.with(applicationContext)
             .load(data)
             .into(this)

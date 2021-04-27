@@ -23,8 +23,8 @@
 
         <ImageView
             android:id="@+id/image_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="130dp"
+            android:layout_height="165dp"
             android:scaleType="centerCrop"
             android:src="@drawable/poster_a_start_is_born"
             android:contentDescription="@string/image_movie_tv" />
