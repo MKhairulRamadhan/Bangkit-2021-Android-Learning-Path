@@ -12,6 +12,7 @@ import com.dicoding.academies.R
 import com.dicoding.academies.data.CourseEntity
 import com.dicoding.academies.databinding.FragmentBookmarkBinding
 import com.dicoding.academies.utils.DataDummy
+import com.dicoding.academies.viewModel.ViewModelFactory
 
 
 /**
@@ -33,7 +34,9 @@ class BookmarkFragment : Fragment(), BookmarkFragmentCallback {
 
         if (activity != null) {
 //            menghubungkan ke viewmodel
-            val viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[BookmarkViewModel::class.java]
+//            val viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[BookmarkViewModel::class.java]
+            val factory = ViewModelFactory.getInstance(requireActivity())
+            val viewModel = ViewModelProvider(this, factory)[BookmarkViewModel::class.java]
             val courses = viewModel.getBookmarks()
 
 //            val courses = DataDummy.generateDummyCourses()

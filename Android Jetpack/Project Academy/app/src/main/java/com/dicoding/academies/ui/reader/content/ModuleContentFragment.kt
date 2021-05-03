@@ -10,6 +10,7 @@ import com.dicoding.academies.data.ContentEntity
 import com.dicoding.academies.data.ModuleEntity
 import com.dicoding.academies.databinding.FragmentModuleContentBinding
 import com.dicoding.academies.ui.reader.CourseReaderViewModel
+import com.dicoding.academies.viewModel.ViewModelFactory
 
 /**
  * A simple [Fragment] subclass.
@@ -34,16 +35,17 @@ class ModuleContentFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
-//            val content = ContentEntity("<h3 class=\\\"fr-text-bordered\\\">Contoh Content</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>")
-            // pakai viewmode
-            val viewModel = ViewModelProvider(requireActivity(), ViewModelProvider.NewInstanceFactory())[CourseReaderViewModel::class.java]
+//          // pakai viewmodel
+//            val viewModel = ViewModelProvider(requireActivity(), ViewModelProvider.NewInstanceFactory())[CourseReaderViewModel::class.java]
+            val factory = ViewModelFactory.getInstance(requireActivity())
+            val viewModel = ViewModelProvider(requireActivity(), factory)[CourseReaderViewModel::class.java]
+
             val module = viewModel.getSelectedModule()
             populateWebView(module)
         }
     }
 
     private fun populateWebView(module: ModuleEntity) {
-//        fragmentModuleContentBinding.webView.loadData(content.content ?: "", "text/html", "UTF-8")
         //pakai viewmodel
         fragmentModuleContentBinding.webView.loadData(module.contentEntity?.content ?: "", "text/html", "UTF-8")
     }

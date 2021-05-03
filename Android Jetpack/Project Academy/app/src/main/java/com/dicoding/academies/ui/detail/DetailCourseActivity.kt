@@ -13,8 +13,10 @@ import com.dicoding.academies.R
 import com.dicoding.academies.data.CourseEntity
 import com.dicoding.academies.databinding.ActivityDetailCourseBinding
 import com.dicoding.academies.databinding.ContentDetailCourseBinding
+import com.dicoding.academies.ui.bookmark.BookmarkViewModel
 import com.dicoding.academies.ui.reader.CourseReaderActivity
 import com.dicoding.academies.utils.DataDummy
+import com.dicoding.academies.viewModel.ViewModelFactory
 
 class DetailCourseActivity : AppCompatActivity() {
 
@@ -37,7 +39,10 @@ class DetailCourseActivity : AppCompatActivity() {
 
         val adapter = DetailCourseAdapter()
 
-        val viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[DetailCourseViewModel::class.java]
+        //viewModel
+//        val viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[DetailCourseViewModel::class.java]
+        val factory = ViewModelFactory.getInstance(this)
+        val viewModel = ViewModelProvider(this, factory)[DetailCourseViewModel::class.java]
 
         val extras = intent.extras
         if (extras != null) {
