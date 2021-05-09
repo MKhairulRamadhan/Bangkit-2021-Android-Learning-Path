@@ -2,6 +2,7 @@ package com.mkhairulramadhan.githubuser.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        Log.d("dataku", "create new")
         //date
         val date = Date()
         val formatter = SimpleDateFormat("EEEE, dd MMMM yyyy",  Locale.ROOT)

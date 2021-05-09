@@ -2,7 +2,6 @@ package com.mkhairulramadhan.submission1moviecatalog.view.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +15,7 @@ import com.mkhairulramadhan.submission1moviecatalog.view.DetailMovieTvActivity
 import com.mkhairulramadhan.submission1moviecatalog.view.DetailMovieTvActivity.Companion.EXTRA_ID
 import com.mkhairulramadhan.submission1moviecatalog.view.DetailMovieTvActivity.Companion.EXTRA_TYPE
 import com.mkhairulramadhan.submission1moviecatalog.viewModel.MovieTvViewModel
+import com.mkhairulramadhan.submission1moviecatalog.viewModel.ViewModelFactory
 
 class MoviesFragment : Fragment() {
 
@@ -34,25 +34,35 @@ class MoviesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Log.d("dataku", "create movie fragment")
-        //progressBar
-        binding.progressBar.visibility = View.VISIBLE
-
         //viewModel
-        viewModel = ViewModelProvider(this)[MovieTvViewModel::class.java]
-        val listMovie = viewModel.getMovieData()
+        val factory = ViewModelFactory.getInstance()
+        viewModel = ViewModelProvider(this, factory)[MovieTvViewModel::class.java]
 
         //recyclerView
         binding.rvMovie.setHasFixedSize(true)
-        showRecyclerView(listMovie)
+        showRecyclerView()
+
+        //checkLoading
+//        checkIsLoading()
     }
 
-    private fun showRecyclerView(listMovie: ArrayList<MovieTvModel>) {
+    private fun checkIsLoading(data: Boolean) {
+            if (data){
+                binding.progressBar.visibility = View.VISIBLE
+            }else{
+                binding.progressBar.visibility = View.INVISIBLE
+            }
+    }
+
+    private fun showRecyclerView() {
+        checkIsLoading(true)
         binding.rvMovie.layoutManager = LinearLayoutManager(context)
         val adapter = MoviesTvAdapter()
-        adapter.setData(listMovie)
+        viewModel.getMovieData().observe(viewLifecycleOwner, {
+            adapter.setData(it)
+            checkIsLoading(false)
+        })
         binding.rvMovie.adapter = adapter
-        binding.progressBar.visibility = View.GONE
 
         //when item selected
         adapter.setOnItemClickCallback(object : MoviesTvAdapter.OnItemClickCallback{
