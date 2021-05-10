@@ -2,7 +2,6 @@ package com.mkhairulramadhan.submission1moviecatalog.view.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,20 +45,15 @@ class TvShowFragment : Fragment() {
         //recyclerView
         binding.rvTv.setHasFixedSize(true)
         showRecyclerView()
-
-        //checkLoading
-//        checkIsLoading()
     }
 
-//    private fun checkIsLoading() {
-//        viewModel.getIsLoading().observe(viewLifecycleOwner, {
-//            if (it){
-//                binding.progressBar.visibility = View.VISIBLE
-//            }else{
-//                binding.progressBar.visibility = View.INVISIBLE
-//            }
-//        })
-//    }
+    private fun checkIsLoading(data: Boolean) {
+        if (data){
+            binding.progressBar.visibility = View.VISIBLE
+        }else{
+            binding.progressBar.visibility = View.INVISIBLE
+        }
+    }
 
     private fun selectedTv(data: MovieTvModel){
         val moveDetail = Intent(context, DetailMovieTvActivity::class.java)
@@ -69,10 +63,12 @@ class TvShowFragment : Fragment() {
     }
 
     private fun showRecyclerView() {
+        checkIsLoading(true)
         binding.rvTv.layoutManager = LinearLayoutManager(context)
         val adapter = MoviesTvAdapter()
         viewModel.getTvData().observe(viewLifecycleOwner, {
             adapter.setData(it)
+            checkIsLoading(false)
         })
         binding.rvTv.adapter = adapter
 

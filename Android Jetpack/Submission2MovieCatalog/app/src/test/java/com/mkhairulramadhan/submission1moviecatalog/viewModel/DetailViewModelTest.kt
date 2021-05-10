@@ -47,23 +47,23 @@ class DetailViewModelTest{
         val movie = MutableLiveData<MovieTvModel>()
         movie.value = dummyMovie
 
-        `when` (movieId?.let { repository.getDetailMovie(it) }).thenReturn(movie)
-        val dataMovie = movieId?.let { viewModel.getDetailMovie(it) }
-        movieId?.let { verify(repository).getDetailMovie(it) }
+        `when` (movieId.let { repository.getDetailMovie(it) }).thenReturn(movie)
+        val dataMovie = movieId.let { viewModel.getDetailMovie(it) }
+        movieId.let { verify(repository).getDetailMovie(it) }
 
         assertNotNull(dataMovie)
-        assertEquals(dummyMovie.id, dataMovie?.value?.id)
-        assertEquals(dummyMovie.title, dataMovie?.value?.title)
-        assertEquals(dummyMovie.backDropImage, dataMovie?.value?.backDropImage)
-        assertEquals(dummyMovie.posterImage, dataMovie?.value?.posterImage)
-        assertEquals(dummyMovie.duration, dataMovie?.value?.duration)
-        assertEquals(dummyMovie.year, dataMovie?.value?.year)
-        assertEquals(dummyMovie.star, dataMovie?.value?.star)
-        assertEquals(dummyMovie.language, dataMovie?.value?.language)
-        assertEquals(dummyMovie.tag, dataMovie?.value?.tag)
-        assertEquals(dummyMovie.synopsis, dataMovie?.value?.synopsis)
+        assertEquals(dummyMovie.id, dataMovie.value?.id)
+        assertEquals(dummyMovie.title, dataMovie.value?.title)
+        assertEquals(dummyMovie.backDropImage, dataMovie.value?.backDropImage)
+        assertEquals(dummyMovie.posterImage, dataMovie.value?.posterImage)
+        assertEquals(dummyMovie.duration, dataMovie.value?.duration)
+        assertEquals(dummyMovie.year, dataMovie.value?.year)
+        assertEquals(dummyMovie.star, dataMovie.value?.star)
+        assertEquals(dummyMovie.language, dataMovie.value?.language)
+        assertEquals(dummyMovie.tag, dataMovie.value?.tag)
+        assertEquals(dummyMovie.synopsis, dataMovie.value?.synopsis)
 
-        movieId?.let { viewModel.getDetailMovie(it).observeForever(dataObserver) }
+        movieId.let { viewModel.getDetailMovie(it).observeForever(dataObserver) }
         verify(dataObserver).onChanged(dummyMovie)
     }
 
@@ -72,23 +72,23 @@ class DetailViewModelTest{
         val tv = MutableLiveData<MovieTvModel>()
         tv.value = dummyTv
 
-        `when` (tvId?.let { repository.getDetailTv(it) }).thenReturn(tv)
-        val dataTv = tvId?.let { viewModel.getDetailTv(it) }
-        tvId?.let { verify(repository).getDetailTv(it) }
+        `when` (tvId.let { repository.getDetailTv(it) }).thenReturn(tv)
+        val dataTv = tvId.let { viewModel.getDetailTv(it) }
+        tvId.let { verify(repository).getDetailTv(it) }
 
         assertNotNull(dataTv)
-        assertEquals(dummyTv.id, dataTv?.value?.id)
-        assertEquals(dummyTv.title, dataTv?.value?.title)
-        assertEquals(dummyTv.backDropImage, dataTv?.value?.backDropImage)
-        assertEquals(dummyTv.posterImage, dataTv?.value?.posterImage)
-        assertEquals(dummyTv.duration, dataTv?.value?.duration)
-        assertEquals(dummyTv.year, dataTv?.value?.year)
-        assertEquals(dummyTv.star, dataTv?.value?.star)
-        assertEquals(dummyTv.language, dataTv?.value?.language)
-        assertEquals(dummyTv.tag, dataTv?.value?.tag)
-        assertEquals(dummyTv.synopsis, dataTv?.value?.synopsis)
+        assertEquals(dummyTv.id, dataTv.value?.id)
+        assertEquals(dummyTv.title, dataTv.value?.title)
+        assertEquals(dummyTv.backDropImage, dataTv.value?.backDropImage)
+        assertEquals(dummyTv.posterImage, dataTv.value?.posterImage)
+        assertEquals(dummyTv.duration, dataTv.value?.duration)
+        assertEquals(dummyTv.year, dataTv.value?.year)
+        assertEquals(dummyTv.star, dataTv.value?.star)
+        assertEquals(dummyTv.language, dataTv.value?.language)
+        assertEquals(dummyTv.tag, dataTv.value?.tag)
+        assertEquals(dummyTv.synopsis, dataTv.value?.synopsis)
 
-        tvId?.let { viewModel.getDetailTv(it).observeForever(dataObserver) }
+        tvId.let { viewModel.getDetailTv(it).observeForever(dataObserver) }
         verify(dataObserver).onChanged(dummyTv)
     }
 

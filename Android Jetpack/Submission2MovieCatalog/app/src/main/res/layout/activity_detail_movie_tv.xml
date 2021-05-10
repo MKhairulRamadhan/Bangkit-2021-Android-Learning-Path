@@ -8,6 +8,7 @@
     android:background="#070D2D">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbarGroup"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:fitsSystemWindows="true"
@@ -54,6 +55,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollviewGroup"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:overScrollMode="never"

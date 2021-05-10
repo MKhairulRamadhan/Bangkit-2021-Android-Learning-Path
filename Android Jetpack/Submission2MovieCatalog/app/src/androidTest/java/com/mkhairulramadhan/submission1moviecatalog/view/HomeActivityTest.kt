@@ -56,14 +56,14 @@ class HomeActivityTest{
 
     @Test
     fun loadTvs(){
-        onView(withId(R.id.nav_tv)).perform(click())
+        onView(withText(R.string.tv_show)).perform(click())
         onView(withId(R.id.rv_tv)).check(matches(isDisplayed()))
         onView(withId(R.id.rv_tv)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(dummyTv.size))
     }
 
     @Test
     fun loadDetailTv() {
-        onView(withId(R.id.nav_tv)).perform(click())
+        onView(withText(R.string.tv_show)).perform(click())
         onView(withId(R.id.rv_tv)).check(matches(isDisplayed()))
         onView(withId(R.id.rv_tv)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
         onView(withId(R.id.title_detail)).check(matches(isDisplayed()))

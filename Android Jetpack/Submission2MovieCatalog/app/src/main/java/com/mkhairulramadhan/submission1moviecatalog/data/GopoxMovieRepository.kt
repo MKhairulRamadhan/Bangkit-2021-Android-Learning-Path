@@ -22,43 +22,40 @@ class GopoxMovieRepository(private val remoteDataSource: RemoteDataSource) : Gop
                 }
     }
 
-//    private val isLoadingData = MutableLiveData<Boolean>()
-
     override fun getAllMovie(): LiveData<List<MovieTvModel>> {
-        val list = MutableLiveData<List<MovieTvModel>>()
+        val listMutable = MutableLiveData<List<MovieTvModel>>()
         CoroutineScope(IO).launch {
-            remoteDataSource.getAllMovie(object : RemoteDataSource.CustomGetAllMovieCallback{
+            remoteDataSource.getAllMovie(object : RemoteDataSource.CustomGetAllMovieCallback {
                 override fun onResponse(movieResponse: List<MovieDataItem>) {
                     val movieList = ArrayList<MovieTvModel>()
-                    for(response in movieResponse){
+                    for (response in movieResponse) {
                         val movie = MovieTvModel(
-                                id = response.id,
-                                title = response.title,
-                                backDropImage = response.backdrop_path,
-                                posterImage = response.poster_path,
-                                year = response.release_date?.dateToYear(),
-                                star = response.vote_average.toString(),
-                                language = response.original_language,
-                                synopsis = response.overview
+                            id = response.id,
+                            title = response.title,
+                            backDropImage = response.backdrop_path,
+                            posterImage = response.poster_path,
+                            year = response.release_date?.dateToYear(),
+                            star = response.vote_average.toString(),
+                            language = response.original_language,
+                            synopsis = response.overview
                         )
                         movieList.add(movie)
                     }
-                    list.postValue(movieList)
+                    listMutable.postValue(movieList)
                 }
-//                override fun onLoading(isLoading: Boolean) {
-//                    isLoadingData.postValue(isLoading)
-//                }
             })
         }
-        return list
+        return listMutable
     }
 
     override fun getDetailMovie(id: Int): LiveData<MovieTvModel> {
         val list = MutableLiveData<MovieTvModel>()
         CoroutineScope(IO).launch {
-            remoteDataSource.getDetailMovie(id, object : RemoteDataSource.CustomDetailMovieCallback {
-                override fun onResponse(movieResponse: MovieDataItem) {
-                    val movie = MovieTvModel(
+            remoteDataSource.getDetailMovie(
+                id,
+                object : RemoteDataSource.CustomDetailMovieCallback {
+                    override fun onResponse(movieResponse: MovieDataItem) {
+                        val movie = MovieTvModel(
                             id = movieResponse.id,
                             title = movieResponse.title,
                             backDropImage = movieResponse.backdrop_path,
@@ -69,14 +66,10 @@ class GopoxMovieRepository(private val remoteDataSource: RemoteDataSource) : Gop
                             duration = movieResponse.runtime?.toHourMinute(),
                             synopsis = movieResponse.overview,
                             tag = concatGenre(movieResponse.genres)
-                    )
-                    list.postValue(movie)
-                }
-
-//                override fun onLoading(isLoading: Boolean) {
-//                    isLoadingData.postValue(isLoading)
-//                }
-            })
+                        )
+                        list.postValue(movie)
+                    }
+                })
         }
         return list
     }
@@ -113,32 +106,23 @@ class GopoxMovieRepository(private val remoteDataSource: RemoteDataSource) : Gop
             remoteDataSource.getDetailTv(id, object : RemoteDataSource.CustomDetailTvCallback {
                 override fun onResponse(tvResponse: TvDataItem) {
                     val tv = MovieTvModel(
-                            id = tvResponse.id,
-                            title = tvResponse.name,
-                            backDropImage = tvResponse.backdrop_path,
-                            posterImage = tvResponse.poster_path,
-                            year = tvResponse.first_air_date?.dateToYear(),
-                            star = tvResponse.vote_average.toString(),
-                            language = tvResponse.original_language,
-                            duration = tvResponse.episode_run_time?.first()?.toHourMinute(),
-                            synopsis = tvResponse.overview,
-                            tag = concatGenre(tvResponse.genres)
+                        id = tvResponse.id,
+                        title = tvResponse.name,
+                        backDropImage = tvResponse.backdrop_path,
+                        posterImage = tvResponse.poster_path,
+                        year = tvResponse.first_air_date?.dateToYear(),
+                        star = tvResponse.vote_average.toString(),
+                        language = tvResponse.original_language,
+                        duration = tvResponse.episode_run_time?.first()?.toHourMinute(),
+                        synopsis = tvResponse.overview,
+                        tag = concatGenre(tvResponse.genres)
                     )
                     list.postValue(tv)
                 }
-
-//                override fun onLoading(isLoading: Boolean) {
-//                    isLoadingData.postValue(isLoading)
-//                }
             })
         }
         return list
     }
-
-//    fun checkLoading(): LiveData<Boolean>{
-//        return this.isLoadingData
-//    }
-
     private fun concatGenre(genres: List<Genre>?): String{
         var tag = ""
         if (genres != null) {

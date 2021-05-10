@@ -41,9 +41,6 @@ class MoviesFragment : Fragment() {
         //recyclerView
         binding.rvMovie.setHasFixedSize(true)
         showRecyclerView()
-
-        //checkLoading
-//        checkIsLoading()
     }
 
     private fun checkIsLoading(data: Boolean) {
@@ -81,13 +78,6 @@ class MoviesFragment : Fragment() {
 
     companion object {
         const val TYPE_MOVIE = "type_movie"
-
-        fun newInstance(): MoviesFragment {
-            val fragment = MoviesFragment()
-            val args = Bundle()
-            fragment.arguments = args
-            return fragment
-        }
     }
 
 }

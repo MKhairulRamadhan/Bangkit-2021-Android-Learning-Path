@@ -1,8 +1,6 @@
 package com.mkhairulramadhan.submission1moviecatalog.data
 
 import androidx.lifecycle.LiveData
-import com.mkhairulramadhan.submission1moviecatalog.data.remote.MovieDataItem
-import com.mkhairulramadhan.submission1moviecatalog.data.remote.TvDataItem
 import com.mkhairulramadhan.submission1moviecatalog.model.MovieTvModel
 
 interface GopoxMovieDataSource {

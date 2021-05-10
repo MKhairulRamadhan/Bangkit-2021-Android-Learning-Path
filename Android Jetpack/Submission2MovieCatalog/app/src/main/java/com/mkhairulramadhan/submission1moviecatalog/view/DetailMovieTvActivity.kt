@@ -48,15 +48,13 @@ class DetailMovieTvActivity : AppCompatActivity() {
         val id = intent.getIntExtra(EXTRA_ID,0)
         val type = intent.getStringExtra(EXTRA_TYPE)
         if (type.equals(TYPE_MOVIE, ignoreCase = true)){
-            viewModel.getDetailMovie(id).observe(this, {
-                //bind to view
+            viewModel.getDetailMovie(id).observe(this) {
                 bindDataDetail(it)
-            })
+            }
         }else if(type.equals(TYPE_TV, ignoreCase = true)){
-            viewModel.getDetailTv(id).observe(this,{
-                //bind to view
+            viewModel.getDetailTv(id).observe(this) {
                 bindDataDetail(it)
-            })
+            }
         }
 
     }
@@ -64,8 +62,12 @@ class DetailMovieTvActivity : AppCompatActivity() {
     private fun checkIsLoading(data: Boolean) {
         if (data){
             binding.progressBar.visibility = View.VISIBLE
+            binding.scrollviewGroup.visibility = View.INVISIBLE
+            binding.appbarGroup.visibility = View.INVISIBLE
         }else{
             binding.progressBar.visibility = View.INVISIBLE
+            binding.scrollviewGroup.visibility = View.VISIBLE
+            binding.appbarGroup.visibility = View.VISIBLE
         }
     }
 

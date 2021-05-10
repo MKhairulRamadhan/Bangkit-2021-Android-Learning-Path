@@ -1,6 +1,5 @@
 package com.mkhairulramadhan.submission1moviecatalog.utils
 
-import com.mkhairulramadhan.submission1moviecatalog.R
 import com.mkhairulramadhan.submission1moviecatalog.data.remote.MovieDataItem
 import com.mkhairulramadhan.submission1moviecatalog.data.remote.TvDataItem
 import com.mkhairulramadhan.submission1moviecatalog.model.MovieTvModel

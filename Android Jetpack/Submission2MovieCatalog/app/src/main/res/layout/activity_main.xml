@@ -35,22 +35,19 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <FrameLayout
-        android:id="@+id/fl_container"
-        android:layout_below="@+id/appbar_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/bn_main"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bn_main"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/background_bottom_navigation"
-        app:itemIconTint="@color/bottom_navigation_selected"
-        app:itemTextColor="@color/bottom_navigation_selected"
-        app:menu="@menu/navigation" />
+        android:background="#000A43"
+        android:layout_below="@+id/appbar_layout"
+        app:tabTextColor="@android:color/white"
+        app:tabIndicatorColor="@android:color/white"/>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_below="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </RelativeLayout>

@@ -1,5 +1,6 @@
 package com.mkhairulramadhan.submission1moviecatalog.retrofit
 
+import com.mkhairulramadhan.submission1moviecatalog.BuildConfig
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -12,7 +13,7 @@ object ConfigApi {
             val retrofit = Retrofit.Builder()
                     .client(httpClient)
                     .addConverterFactory(GsonConverterFactory.create())
-                    .baseUrl("https://api.themoviedb.org/3/")
+                    .baseUrl(BuildConfig.BASE_API)
                     .build()
             return retrofit.create(ServiceApi::class.java)
         }

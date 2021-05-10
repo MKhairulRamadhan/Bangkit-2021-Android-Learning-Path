@@ -9,26 +9,23 @@ object LiveDataTesting {
 
     @Suppress("UNCHECKED_CAST")
     fun <T> getValue(liveData: LiveData<T>): T {
-        val data = arrayOfNulls<Any>(1)
-        val latch = CountDownLatch(1)
+        val dataLive = arrayOfNulls<Any>(1)
+        val countLatch = CountDownLatch(1)
 
         val observer = object : Observer<T> {
             override fun onChanged(o: T) {
-                data[0] = o
-                latch.countDown()
+                dataLive[0] = o
+                countLatch.countDown()
                 liveData.removeObserver(this)
             }
         }
-
         liveData.observeForever(observer)
-
         try {
-            latch.await(2, TimeUnit.SECONDS)
+            countLatch.await(2, TimeUnit.SECONDS)
         } catch (e: InterruptedException) {
             e.printStackTrace()
         }
-
-        return data[0] as T
+        return dataLive[0] as T
 
     }
 }
