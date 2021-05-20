@@ -1,0 +1,154 @@
+
+
+    Scenario:
+    1. MovieTvViewModelText
+    >>> memuat data movie
+    -Memanipulasi data ketika pemanggilan data movie di kelas reposioty
+    -Memastikan function di Kelas repository terpanggil
+    -Memastikan data movie tidak null
+    -memastikan jumlah data movie sesuai dengan yang diharapkan
+
+
+    >>> memuat data tv
+    - Memanipulasi data ketika pemanggilan data tv di kelas reposioty
+    - Memastikan function di Kelas repository terpanggil
+    - memastikan data tv tidak null
+    - memastikan jumlah data tv sesuai dengan yang diharapkan
+
+    2. DetailViewModelTest
+    >>> memuat detail movie
+    - Memanipulasi data ketika pemanggilan data detailMovie di kelas reposioty
+    - Memastikan function di Kelas repository terpanggil
+    - memasukan data id kedalam setSelectMovie
+    - melakukan observer pada data allMovie
+
+
+    >>> memuat detail tv
+    - Memanipulasi data ketika pemanggilan data detailTv di kelas reposioty
+    - Memastikan function di Kelas repository terpanggil
+    - memasukan data id kedalam setSelectTv
+    - melakukan observer pada data allTv
+
+    >>> melakukan set favorite Movie
+    - Memanipulasi data ketika pemanggilan data detailMovie di kelas reposioty
+    - memanipulasi data ketika melakukan setMovieFavorite
+    - melakukan observer pada data allMovie
+    - Memastikan function setMovieFavorie di Kelas repository terpanggil
+
+    >>> melakukan set favorite tv
+    - Memanipulasi data ketika pemanggilan data detailTv di kelas reposioty
+    - memanipulasi data ketika melakukan setTvFavorite
+    - melakukan observer pada data allTv
+    - Memastikan function setTvFavorie di Kelas repository terpanggil
+
+    3. FavoriteViewModelTest
+    >>> memuat data favorite movie
+    -Memanipulasi data ketika pemanggilan data favorite movie di kelas reposioty
+    -Memastikan function di Kelas repository terpanggil
+    -Memastikan data favorite movie tidak null
+    -memastikan jumlah data favorite movie sesuai dengan yang diharapkan
+
+    >>> memuat data favorite tv
+    -Memanipulasi data ketika pemanggilan data favorite tv di kelas reposioty
+    -Memastikan function di Kelas repository terpanggil
+    -Memastikan data favorite tv tidak null
+    -memastikan jumlah data favorite tv sesuai dengan yang diharapkan
+
+    4. GopoxMovieRepositoryTest
+    >>> getAllMovie
+    - Memanipulasi data ketika pemanggilan data movie di kelas localDataSource
+    - Memastikan function di kelas localDataSource Terpanggil
+    - Mematikan data movie tidak null
+    - Memastikan jumlah data movie sesuai yang diharapkan
+
+    >>> getAllTv
+    - Memanipulasi data ketika pemanggilan data Tv di kelas localDataSource
+    - Memastikan function di kelas localDataSourceTerpanggil
+    - Mematikan data Tv tidak null
+    - Memastikan jumlah data Tv sesuai yang diharapkan
+
+    >>> getDetailMovie
+    - Memanipulasi data ketika pemanggilan data detailMovie di kelas localDataSource
+    - Memastikan function di kelas localDataSource Terpanggil
+    - Mematikan data detailMovie tidak null
+    - Memastikan semua field data detailMovie sesuai yang diharapkan
+
+    >>> getDetailMovie
+    - Memanipulasi data ketika pemanggilan data detailTv di kelas localDataSource
+    - Memastikan function di kelas localDataSource Terpanggil
+    - Mematikan data detailTv tidak null
+    - Memastikan semua field data detailTv sesuai yang diharapkan
+
+    >>> getFavoriteMovie
+    - Memanipulasi data ketika pemanggilan data favorite movie di kelas localDataSource
+    - Memastikan function di kelas localDataSource Terpanggil
+    - Mematikan data favorite movie tidak null
+    - Memastikan jumlah data favorite movie sesuai yang diharapkan
+
+    >>> getFavoriteTv
+    - Memanipulasi data ketika pemanggilan data favorite tv di kelas localDataSource
+    - Memastikan function di kelas localDataSource Terpanggil
+    - Mematikan data favorite movie tidak null
+    - Memastikan jumlah data favorite movie sesuai yang diharapkan
+
+
+    ##Scenario Instrumental testing:##
+    >>> menampilkan data movie
+    - memastikan rv_movie dalam keadaan tampil
+    - Gulir rv_movie ke posisi data terakhir
+
+
+    >>> menampilkan data detail movie
+    - memastikan rv_movie dalam keadaan tampil
+    - memberikan tindakan klik pada data pertama di rv_movie
+    - memastikan TextView title_detail tampil sesuai yang diharapkan
+    - memastikan TextView backdrop_image_detail tampil sesuai yang diharapkan
+    - memastikan TextView star_detail tampil sesuai yang diharapkan
+    - memastikan TextView year_detail tampil sesuai yang diharapkan
+    - memastikan TextView language_detail tampil sesuai yang diharapkan
+    - memastikan TextView synopsis_detail tampil sesuai yang diharapkan
+    - memastikan ImageView poster_image_detail tampil sesuai yang diharapkan
+
+
+    >>> menampilkan data tv
+    - memberikan tindakan klik pada bottom navigation dengan id R.d.nav_tv
+    - memastikan tv_tv dalam keadaan tampil
+    - gulir rv_tv ke posisi data terakhir
+
+
+    >>> menampilkan data detail tv
+    - memberikan tindakan klik pada bottom navigation dengan id R.d.nav_tv
+    - memastikan tr_tv dalam keadaan tampil
+    - memberikan tindakan klik pada data pertama di rv_movie
+    - memastikan TextView title_detail tampil sesuai yang diharapkan
+    - memastikan TextView backdrop_image_detail tampil sesuai yang diharapkan
+    - memastikan TextView star_detail tampil sesuai yang diharapkan
+    - memastikan TextView genre_detail tampil sesuai yang diharapkan
+    - memastikan TextView year_detail tampil sesuai yang diharapkan
+    - memastikan TextView duration_detail tampil sesuai yang diharapkan
+    - memastikan TextView language_detail tampil sesuai yang diharapkan
+    - memastikan TextView synopsis_detail tampil sesuai yang diharapkan
+    - memastikan ImageView poster_image_detail tampil sesuai yang diharapkan
+
+    >>> menampilkan data favorite movie
+    - memastikan rv_movie dalam keadaan tampil
+    - memberikan aksi klik pada data pertama di rv_movie
+    - memberikan aksi klik pada tombol favorite
+    - memberikan aksi kembali ke halaman sebelumnya(pressBack)
+    - memberikan aksi klik pada bottom navigation dengan id R.id.nav_fav
+    - memastikan rv_movie pada favorite dalam keadaan tampil
+    - memberikan aksi klik pada data pertama favorite rv_movie
+    - memastikan semua field data favorite movie tampil sesuai yang diharapkan
+
+    >>> menampilkan data favorite tv
+    - memberikan aksi klik pada bottom navigation dengan id R.id.nav_tv
+    - memastikan rv_tv dalam keadaan tampil
+    - memberikan aksi klik pada data pertama di rv_tv
+    - memberikan aksi klik pada tombol favorite
+    - memberikan aksi kembali ke halaman sebelumnya(pressBack)
+    - memberikan aksi klik pada bottom navigation dengan id R.id.nav_fav
+    - memberikan aksi klik pada tab layout dengan text "TV SHOWS"
+    - memastikan rv_tv pada favorite dalam keadaan tampil
+    - memberikan aksi klik pada data pertama favorite rv_tv
+    - memastikan semua field data favorite tv tampil sesuai yang diharapkan
+

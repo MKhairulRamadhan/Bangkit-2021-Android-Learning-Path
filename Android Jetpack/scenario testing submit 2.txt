@@ -1,0 +1,96 @@
+
+
+    Scenario:
+    1. MovieTvViewModelText
+    >>> memuat data movie
+    -Memanipulasi data ketika pemanggilan data movie di kelas reposioty
+    -Memastikan function di Kelas repository terpanggil
+    -Memastikan data movie tidak null
+    -memastikan jumlah data movie sesuai dengan yang diharapkan
+
+
+    >>> memuat data tv
+    - Memanipulasi data ketika pemanggilan data tv di kelas reposioty
+    - Memastikan function di Kelas repository terpanggil
+    - memastikan data tv tidak null
+    - memastikan jumlah data tv sesuai dengan yang diharapkan
+
+    2. DetailViewModelTest
+    >>> memuat detail movie
+    - Memanipulasi data ketika pemanggilan data detailMovie di kelas reposioty
+    - Memastikan function di Kelas repository terpanggil
+    - memastikan data detail movie tidak null
+    - memastikan semua value dari detail movie sesuai yang diharapkan
+
+
+    >>> memuat detail tv
+    - Memanipulasi data ketika pemanggilan data detailTv di kelas reposioty
+    - Memastikan function di Kelas repository terpanggil
+    - memastikan data detail tv tidak null
+    - memastikan semua value dari detail tv sesuai yang diharapkan
+
+    3. GopoxMovieRepositoryTest
+    >>> getAllMovie
+    - Memanipulasi data ketika pemanggilan data movie di kelas remoteDataSource
+    - Memastikan function di kelas remoteDataSource Terpanggil
+    - Mematikan data movie tidak null
+    - Memastikan jumlah data movie sesuai yang diharapkan
+
+    >>> getAllTv
+    - Memanipulasi data ketika pemanggilan data Tv di kelas remoteDataSource
+    - Memastikan function di kelas remoteDataSource Terpanggil
+    - Mematikan data Tv tidak null
+    - Memastikan jumlah data Tv sesuai yang diharapkan
+
+    >>> getDetailMovie
+    - Memanipulasi data ketika pemanggilan data detailMovie di kelas remoteDataSource
+    - Memastikan function di kelas remoteDataSource Terpanggil
+    - Mematikan data detailMovie tidak null
+    - Memastikan id data detailMovie sesuai yang diharapkan
+
+    >>> getDetailMovie
+    - Memanipulasi data ketika pemanggilan data detailTv di kelas remoteDataSource
+    - Memastikan function di kelas remoteDataSource Terpanggil
+    - Mematikan data detailTv tidak null
+    - Memastikan id data detailTv sesuai yang diharapkan
+
+
+    #Scenario Instrumental testing:
+    >>> menampilkan data movie
+    - memastikan rv_movie dalam keadaan tampil
+    - Gulir rv_movie ke posisi data terakhir
+
+
+    >>> menampilkan data detail movie
+    - memastikan rv_movie dalam keadaan tampil
+    - memberikan tindakan klik pada data pertama di rv_movie
+    - memastikan TextView title_detail tampil sesuai yang diharapkan
+    - memastikan TextView backdrop_image_detail tampil sesuai yang diharapkan
+    - memastikan TextView star_detail tampil sesuai yang diharapkan
+    - memastikan TextView genre_detail tampil sesuai yang diharapkan
+    - memastikan TextView year_detail tampil sesuai yang diharapkan
+    - memastikan TextView duration_detail tampil sesuai yang diharapkan
+    - memastikan TextView language_detail tampil sesuai yang diharapkan
+    - memastikan TextView synopsis_detail tampil sesuai yang diharapkan
+    - memastikan ImageView poster_image_detail tampil sesuai yang diharapkan
+
+
+    >>> menampilkan data tv
+    - memberikan tindakan klik pada tab layout dengan text "Tv Shows"
+    - memastikan tv_tv dalam keadaan tampil
+    - gulir rv_tv ke posisi data terakhir
+
+
+    >>> menampilkan data detail tv
+    - memberikan tindakan klik pada tab layout dengan text "Tv Shows"
+    - memastikan tv_tv dalam keadaan tampil
+    - memberikan tindakan klik pada data pertama di rv_movie
+    - memastikan TextView title_detail tampil sesuai yang diharapkan
+    - memastikan TextView backdrop_image_detail tampil sesuai yang diharapkan
+    - memastikan TextView star_detail tampil sesuai yang diharapkan
+    - memastikan TextView genre_detail tampil sesuai yang diharapkan
+    - memastikan TextView year_detail tampil sesuai yang diharapkan
+    - memastikan TextView duration_detail tampil sesuai yang diharapkan
+    - memastikan TextView language_detail tampil sesuai yang diharapkan
+    - memastikan TextView synopsis_detail tampil sesuai yang diharapkan
+    - memastikan ImageView poster_image_detail tampil sesuai yang diharapkan
