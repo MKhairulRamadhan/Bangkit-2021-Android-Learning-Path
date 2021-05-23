@@ -1,15 +1,12 @@
 package com.mkhairulramadhan.submission1moviecatalog.viewModel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
-import com.mkhairulramadhan.submission1moviecatalog.data.GopoxMovieRepository
-import com.mkhairulramadhan.submission1moviecatalog.data.local.entity.MovieEntity
-import com.mkhairulramadhan.submission1moviecatalog.data.local.entity.TvEntity
-import com.mkhairulramadhan.submission1moviecatalog.valueObject.ResourceData
+import androidx.lifecycle.*
+import com.mkhairulramadhan.submission1moviecatalog.core.domain.model.MovieModel
+import com.mkhairulramadhan.submission1moviecatalog.core.domain.model.TvModel
+import com.mkhairulramadhan.submission1moviecatalog.core.domain.usecase.GopoxMovieUseCase
+import com.mkhairulramadhan.submission1moviecatalog.core.valueObject.ResourceData
 
-class DetailViewModel(private val repository: GopoxMovieRepository): ViewModel() {
+class DetailViewModel(private val gopoxMovieUseCase: GopoxMovieUseCase): ViewModel() {
 
     private val idMovie = MutableLiveData<Int>()
     private val idTv = MutableLiveData<Int>()
@@ -22,14 +19,14 @@ class DetailViewModel(private val repository: GopoxMovieRepository): ViewModel()
         this.idTv.value = id
     }
 
-    var allMovie: LiveData<ResourceData<MovieEntity>> =
+    var allMovie: LiveData<ResourceData<MovieModel>> =
         Transformations.switchMap(idMovie){
-            repository.getDetailMovie(it)
+            gopoxMovieUseCase.getDetailMovie(it).asLiveData()
         }
 
-    var allTv: LiveData<ResourceData<TvEntity>> =
+    var allTv: LiveData<ResourceData<TvModel>> =
         Transformations.switchMap(idTv){
-            repository.getDetailTv(it)
+            gopoxMovieUseCase.getDetailTv(it).asLiveData()
         }
 
     fun setMovieFavorire(){
@@ -38,7 +35,7 @@ class DetailViewModel(private val repository: GopoxMovieRepository): ViewModel()
             val entity = movieData.data
             if (entity!=null){
                 val state = !entity.favorite
-                repository.setMovieFavorite(entity, state)
+                gopoxMovieUseCase.setMovieFavorite(entity, state)
             }
         }
     }
@@ -49,7 +46,7 @@ class DetailViewModel(private val repository: GopoxMovieRepository): ViewModel()
             val entity = tvData.data
             if (entity!=null){
                 val state = !entity.favorite
-                repository.setTvFavorite(entity, state)
+                gopoxMovieUseCase.setTvFavorite(entity, state)
             }
         }
     }

@@ -3,17 +3,17 @@ package com.mkhairulramadhan.submission1moviecatalog.viewModel
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.mkhairulramadhan.submission1moviecatalog.data.GopoxMovieRepository
-import com.mkhairulramadhan.submission1moviecatalog.di.Injection
+import com.mkhairulramadhan.submission1moviecatalog.core.di.Injection
+import com.mkhairulramadhan.submission1moviecatalog.core.domain.usecase.GopoxMovieUseCase
 
-class ViewModelFactory private constructor(private val repository: GopoxMovieRepository) : ViewModelProvider.NewInstanceFactory() {
+class ViewModelFactory private constructor(private val usecase: GopoxMovieUseCase) : ViewModelProvider.NewInstanceFactory() {
     companion object{
         @Volatile
         private var instance: ViewModelFactory?= null
 
         fun getInstance(context: Context): ViewModelFactory =
                 instance?: synchronized(this){
-                    instance?: ViewModelFactory(Injection.injectRepository(context))
+                    instance?: ViewModelFactory(Injection.provideGopoxMovieUseCase(context))
                 }
     }
 
@@ -21,13 +21,13 @@ class ViewModelFactory private constructor(private val repository: GopoxMovieRep
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return when{
             modelClass.isAssignableFrom(MovieTvViewModel::class.java)->{
-                MovieTvViewModel(repository) as T
+                MovieTvViewModel(usecase) as T
             }
             modelClass.isAssignableFrom(DetailViewModel::class.java)->{
-                DetailViewModel(repository) as T
+                DetailViewModel(usecase) as T
             }
             modelClass.isAssignableFrom(FavoriteViewModel::class.java)->{
-                FavoriteViewModel(repository) as T
+                FavoriteViewModel(usecase) as T
             }
             else -> throw Throwable("UnKnow ViewModel class: " + modelClass.name)
         }

@@ -9,10 +9,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.mkhairulramadhan.submission1moviecatalog.adapter.MoviesAdapter
-import com.mkhairulramadhan.submission1moviecatalog.data.local.entity.MovieEntity
+import com.mkhairulramadhan.submission1moviecatalog.core.adapter.MoviesAdapter
+import com.mkhairulramadhan.submission1moviecatalog.core.domain.model.MovieModel
+import com.mkhairulramadhan.submission1moviecatalog.core.valueObject.StatusData
 import com.mkhairulramadhan.submission1moviecatalog.databinding.FragmentMoviesBinding
-import com.mkhairulramadhan.submission1moviecatalog.valueObject.StatusData
 import com.mkhairulramadhan.submission1moviecatalog.view.DetailMovieTvActivity
 import com.mkhairulramadhan.submission1moviecatalog.view.DetailMovieTvActivity.Companion.EXTRA_ID
 import com.mkhairulramadhan.submission1moviecatalog.view.DetailMovieTvActivity.Companion.EXTRA_TYPE
@@ -47,13 +47,13 @@ class MoviesFragment : Fragment() {
     private fun showRecyclerView() {
         binding.rvMovie.layoutManager = LinearLayoutManager(context)
         val adapter = MoviesAdapter()
-        viewModel.getMovieData().observe(viewLifecycleOwner, {
+        viewModel.getMovieData.observe(viewLifecycleOwner, {
             if (it != null){
                 when (it.statusData){
                     StatusData.LOADING -> binding.progressBar.visibility = View.VISIBLE
                     StatusData.SUCCESS -> {
                         binding.progressBar.visibility = View.GONE
-                        adapter.submitList(it.data)
+                        it.data?.let { it1 -> adapter.setData(it1) }
                         adapter.notifyDataSetChanged()
                     }
                     StatusData.ERROR -> {
@@ -68,13 +68,13 @@ class MoviesFragment : Fragment() {
 
         //when item selected
         adapter.setOnItemClickCallback(object : MoviesAdapter.OnItemClickCallback{
-            override fun onItemClicked(data: MovieEntity) {
+            override fun onItemClicked(data: MovieModel) {
                 selectedMovie(data)
             }
         })
     }
 
-    private fun selectedMovie(data: MovieEntity){
+    private fun selectedMovie(data: MovieModel){
         val moveDetail = Intent(context, DetailMovieTvActivity::class.java)
         moveDetail.putExtra(EXTRA_ID,data.id)
         moveDetail.putExtra(EXTRA_TYPE, TYPE_MOVIE)

@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.mkhairulramadhan.submission1moviecatalog.adapter.PagerAdapter
+import com.mkhairulramadhan.submission1moviecatalog.core.adapter.PagerAdapter
 import com.mkhairulramadhan.submission1moviecatalog.databinding.FragmentFavoriteBinding
 
 class FavoriteFragment : Fragment() {

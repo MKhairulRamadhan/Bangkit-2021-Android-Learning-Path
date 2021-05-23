@@ -9,11 +9,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.mkhairulramadhan.submission1moviecatalog.R
-import com.mkhairulramadhan.submission1moviecatalog.data.local.entity.MovieEntity
-import com.mkhairulramadhan.submission1moviecatalog.data.local.entity.TvEntity
+import com.mkhairulramadhan.submission1moviecatalog.core.data.local.entity.MovieEntity
+import com.mkhairulramadhan.submission1moviecatalog.core.data.local.entity.TvEntity
+import com.mkhairulramadhan.submission1moviecatalog.core.domain.model.MovieModel
+import com.mkhairulramadhan.submission1moviecatalog.core.domain.model.TvModel
 import com.mkhairulramadhan.submission1moviecatalog.databinding.ActivityDetailMovieTvBinding
-import com.mkhairulramadhan.submission1moviecatalog.valueObject.ResourceData
-import com.mkhairulramadhan.submission1moviecatalog.valueObject.StatusData
+import com.mkhairulramadhan.submission1moviecatalog.core.valueObject.ResourceData
+import com.mkhairulramadhan.submission1moviecatalog.core.valueObject.StatusData
 import com.mkhairulramadhan.submission1moviecatalog.view.fragment.MoviesFragment.Companion.TYPE_MOVIE
 import com.mkhairulramadhan.submission1moviecatalog.view.fragment.TvShowFragment.Companion.TYPE_TV
 import com.mkhairulramadhan.submission1moviecatalog.viewModel.DetailViewModel
@@ -99,7 +101,7 @@ class DetailMovieTvActivity : AppCompatActivity() {
     }
 
 
-    private fun bindDataDetailMovie(data: ResourceData<MovieEntity>) {
+    private fun bindDataDetailMovie(data: ResourceData<MovieModel>) {
         with(binding){
             backdropImageDetail.loadImage("https://image.tmdb.org/t/p/original/${data.data?.backDropImage}")
             posterImageDetail.loadImage("https://image.tmdb.org/t/p/original/${data.data?.posterImage}")
@@ -114,7 +116,7 @@ class DetailMovieTvActivity : AppCompatActivity() {
         }
     }
 
-    private fun bindDataDetailTv(data: ResourceData<TvEntity>) {
+    private fun bindDataDetailTv(data: ResourceData<TvModel>) {
         with(binding){
             backdropImageDetail.loadImage("https://image.tmdb.org/t/p/original/${data.data?.backDropImage}")
             posterImageDetail.loadImage("https://image.tmdb.org/t/p/original/${data.data?.posterImage}")

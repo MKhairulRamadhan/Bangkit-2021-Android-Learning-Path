@@ -7,13 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
-import com.mkhairulramadhan.submission1moviecatalog.R
-import com.mkhairulramadhan.submission1moviecatalog.adapter.MoviesAdapter
-import com.mkhairulramadhan.submission1moviecatalog.data.local.entity.MovieEntity
+import com.mkhairulramadhan.submission1moviecatalog.core.adapter.MoviesAdapter
+import com.mkhairulramadhan.submission1moviecatalog.core.domain.model.MovieModel
 import com.mkhairulramadhan.submission1moviecatalog.databinding.FragmentMoviesBinding
 import com.mkhairulramadhan.submission1moviecatalog.view.DetailMovieTvActivity
 import com.mkhairulramadhan.submission1moviecatalog.viewModel.FavoriteViewModel
@@ -36,9 +32,6 @@ class MovieFavoriteFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //paging touch
-        itemTouchData.attachToRecyclerView(binding.rvMovie)
-
         //viewModel
         val factory = ViewModelFactory.getInstance(requireActivity())
         viewModel = ViewModelProvider(this, factory)[FavoriteViewModel::class.java]
@@ -53,7 +46,7 @@ class MovieFavoriteFragment: Fragment() {
         binding.rvMovie.layoutManager = LinearLayoutManager(context)
         adapter = MoviesAdapter()
         viewModel.getFavoriteMovie().observe(viewLifecycleOwner, {
-            adapter.submitList(it)
+            adapter.setData(it)
             adapter.notifyDataSetChanged()
             loading(false)
             if(it.isNotEmpty()){
@@ -66,13 +59,13 @@ class MovieFavoriteFragment: Fragment() {
 
         //when item selected
         adapter.setOnItemClickCallback(object : MoviesAdapter.OnItemClickCallback{
-            override fun onItemClicked(data: MovieEntity) {
+            override fun onItemClicked(data: MovieModel) {
                 selectedMovie(data)
             }
         })
     }
 
-    private fun selectedMovie(data: MovieEntity){
+    private fun selectedMovie(data: MovieModel){
         val moveDetail = Intent(context, DetailMovieTvActivity::class.java)
         moveDetail.putExtra(DetailMovieTvActivity.EXTRA_ID,data.id)
         moveDetail.putExtra(DetailMovieTvActivity.EXTRA_TYPE, MoviesFragment.TYPE_MOVIE)
@@ -86,26 +79,5 @@ class MovieFavoriteFragment: Fragment() {
             binding.progressBar.visibility = View.INVISIBLE
         }
     }
-
-    private val itemTouchData = ItemTouchHelper(object : ItemTouchHelper.Callback() {
-        override fun getMovementFlags(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder): Int =
-            makeMovementFlags(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT)
-
-        override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean = true
-
-        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-            if (view != null) {
-                val swipedPosition = viewHolder.adapterPosition
-                val movieEntity = adapter.getSwiped(swipedPosition)
-                movieEntity?.let { viewModel.setFavoriteMovie(it) }
-
-                val snackbar = Snackbar.make(view as View, R.string.message_cancel, Snackbar.LENGTH_LONG)
-                snackbar.setAction(R.string.message_yes) { _ ->
-                    movieEntity?.let { viewModel.setFavoriteMovie(it) }
-                }
-                snackbar.show()
-            }
-        }
-    })
 
 }

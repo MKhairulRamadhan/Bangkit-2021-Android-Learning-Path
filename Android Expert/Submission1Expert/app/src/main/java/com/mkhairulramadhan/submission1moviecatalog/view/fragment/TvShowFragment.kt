@@ -9,10 +9,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.mkhairulramadhan.submission1moviecatalog.adapter.TvAdapter
-import com.mkhairulramadhan.submission1moviecatalog.data.local.entity.TvEntity
+import com.mkhairulramadhan.submission1moviecatalog.core.adapter.TvAdapter
+import com.mkhairulramadhan.submission1moviecatalog.core.domain.model.TvModel
+import com.mkhairulramadhan.submission1moviecatalog.core.valueObject.StatusData
 import com.mkhairulramadhan.submission1moviecatalog.databinding.FragmentTvShowBinding
-import com.mkhairulramadhan.submission1moviecatalog.valueObject.StatusData
 import com.mkhairulramadhan.submission1moviecatalog.view.DetailMovieTvActivity
 import com.mkhairulramadhan.submission1moviecatalog.view.DetailMovieTvActivity.Companion.EXTRA_ID
 import com.mkhairulramadhan.submission1moviecatalog.view.DetailMovieTvActivity.Companion.EXTRA_TYPE
@@ -50,7 +50,7 @@ class TvShowFragment : Fragment() {
     }
 
 
-    private fun selectedTv(data: TvEntity){
+    private fun selectedTv(data: TvModel){
         val moveDetail = Intent(context, DetailMovieTvActivity::class.java)
         moveDetail.putExtra(EXTRA_ID,data.id)
         moveDetail.putExtra(EXTRA_TYPE, TYPE_TV)
@@ -60,13 +60,13 @@ class TvShowFragment : Fragment() {
     private fun showRecyclerView() {
         binding.rvTv.layoutManager = LinearLayoutManager(context)
         val adapter = TvAdapter()
-        viewModel.getTvData().observe(viewLifecycleOwner, {
+        viewModel.getTvData.observe(viewLifecycleOwner, {
             if (it != null){
                 when (it.statusData){
                     StatusData.LOADING -> binding.progressBar.visibility = View.VISIBLE
                     StatusData.SUCCESS -> {
                         binding.progressBar.visibility = View.GONE
-                        adapter.submitList(it.data)
+                        it.data?.let { it1 -> adapter.setData(it1) }
                         adapter.notifyDataSetChanged()
                     }
                     StatusData.ERROR -> {
@@ -80,7 +80,7 @@ class TvShowFragment : Fragment() {
 
         //when item selected
         adapter.setOnItemClickCallback(object : TvAdapter.OnItemClickCallback{
-            override fun onItemClicked(data: TvEntity) {
+            override fun onItemClicked(data: TvModel) {
                 selectedTv(data)
             }
         })

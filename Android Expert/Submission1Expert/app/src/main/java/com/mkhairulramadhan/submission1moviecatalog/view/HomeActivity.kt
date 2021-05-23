@@ -21,8 +21,10 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.bnMain.setOnNavigationItemSelectedListener(navigationSelector)
-        val fragment = MoviesFragment.newInstance()
-        addFragment(fragment)
+        if(savedInstanceState == null){
+            val fragment = MoviesFragment.newInstance()
+            addFragment(fragment)
+        }
     }
 
     private val navigationSelector = BottomNavigationView.OnNavigationItemSelectedListener { item ->

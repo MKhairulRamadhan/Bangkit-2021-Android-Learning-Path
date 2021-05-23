@@ -7,13 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
-import com.mkhairulramadhan.submission1moviecatalog.R
-import com.mkhairulramadhan.submission1moviecatalog.adapter.TvAdapter
-import com.mkhairulramadhan.submission1moviecatalog.data.local.entity.TvEntity
+import com.mkhairulramadhan.submission1moviecatalog.core.adapter.TvAdapter
+import com.mkhairulramadhan.submission1moviecatalog.core.data.local.entity.TvEntity
+import com.mkhairulramadhan.submission1moviecatalog.core.domain.model.TvModel
 import com.mkhairulramadhan.submission1moviecatalog.databinding.FragmentTvShowBinding
 import com.mkhairulramadhan.submission1moviecatalog.view.DetailMovieTvActivity
 import com.mkhairulramadhan.submission1moviecatalog.view.fragment.TvShowFragment.Companion.TYPE_TV
@@ -37,9 +34,6 @@ class TvFavoriteFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //paging touch
-        itemTouchData.attachToRecyclerView(binding.rvTv)
-
         //viewModel
         val factory = ViewModelFactory.getInstance(requireActivity())
         viewModel = ViewModelProvider(this, factory)[FavoriteViewModel::class.java]
@@ -54,7 +48,7 @@ class TvFavoriteFragment: Fragment() {
         binding.rvTv.layoutManager = LinearLayoutManager(context)
         adapter = TvAdapter()
         viewModel.getFavoriteTv().observe(viewLifecycleOwner, {
-            adapter.submitList(it)
+            adapter.setData(it)
             adapter.notifyDataSetChanged()
             loading(false)
             if(it.isNotEmpty()){
@@ -67,13 +61,13 @@ class TvFavoriteFragment: Fragment() {
 
         //when item selected
         adapter.setOnItemClickCallback(object : TvAdapter.OnItemClickCallback{
-            override fun onItemClicked(data: TvEntity) {
+            override fun onItemClicked(data: TvModel) {
                 selectedMovie(data)
             }
         })
     }
 
-    private fun selectedMovie(data: TvEntity){
+    private fun selectedMovie(data: TvModel){
         val moveDetail = Intent(context, DetailMovieTvActivity::class.java)
         moveDetail.putExtra(DetailMovieTvActivity.EXTRA_ID,data.id)
         moveDetail.putExtra(DetailMovieTvActivity.EXTRA_TYPE, TYPE_TV)
@@ -88,24 +82,4 @@ class TvFavoriteFragment: Fragment() {
         }
     }
 
-    private val itemTouchData = ItemTouchHelper(object : ItemTouchHelper.Callback() {
-        override fun getMovementFlags(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder): Int =
-            makeMovementFlags(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT)
-
-        override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean = true
-
-        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-            if (view != null) {
-                val swipedPosition = viewHolder.adapterPosition
-                val tvEntity = adapter.getSwiped(swipedPosition)
-                tvEntity?.let { viewModel.setFavoriteTv(it) }
-
-                val snackbar = Snackbar.make(view as View, R.string.message_cancel, Snackbar.LENGTH_LONG)
-                snackbar.setAction(R.string.message_yes) { _ ->
-                    tvEntity?.let { viewModel.setFavoriteTv(it) }
-                }
-                snackbar.show()
-            }
-        }
-    })
 }
