@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.mkhairulramadhan.submission1moviecatalog.core.adapter.MoviesAdapter
-import com.mkhairulramadhan.submission1moviecatalog.core.domain.model.MovieModel
-import com.mkhairulramadhan.submission1moviecatalog.core.valueObject.StatusData
+import com.mkhairulramadhan.core.adapter.MoviesAdapter
+import com.mkhairulramadhan.core.domain.model.MovieModel
+import com.mkhairulramadhan.core.valueObject.StatusData
 import com.mkhairulramadhan.submission1moviecatalog.databinding.FragmentMoviesBinding
 import com.mkhairulramadhan.submission1moviecatalog.view.DetailMovieTvActivity
 import com.mkhairulramadhan.submission1moviecatalog.view.DetailMovieTvActivity.Companion.EXTRA_ID

@@ -1,10 +1,10 @@
 package com.mkhairulramadhan.submission1moviecatalog.viewModel
 
 import androidx.lifecycle.*
-import com.mkhairulramadhan.submission1moviecatalog.core.domain.model.MovieModel
-import com.mkhairulramadhan.submission1moviecatalog.core.domain.model.TvModel
-import com.mkhairulramadhan.submission1moviecatalog.core.domain.usecase.GopoxMovieUseCase
-import com.mkhairulramadhan.submission1moviecatalog.core.valueObject.ResourceData
+import com.mkhairulramadhan.core.domain.model.MovieModel
+import com.mkhairulramadhan.core.domain.model.TvModel
+import com.mkhairulramadhan.core.domain.usecase.GopoxMovieUseCase
+import com.mkhairulramadhan.core.valueObject.ResourceData
 
 class DetailViewModel(private val gopoxMovieUseCase: GopoxMovieUseCase): ViewModel() {
 

@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.mkhairulramadhan.submission1moviecatalog.core.adapter.MoviesAdapter
-import com.mkhairulramadhan.submission1moviecatalog.core.domain.model.MovieModel
+import com.mkhairulramadhan.core.adapter.MoviesAdapter
+import com.mkhairulramadhan.core.domain.model.MovieModel
 import com.mkhairulramadhan.submission1moviecatalog.databinding.FragmentMoviesBinding
 import com.mkhairulramadhan.submission1moviecatalog.view.DetailMovieTvActivity
 import com.mkhairulramadhan.submission1moviecatalog.viewModel.FavoriteViewModel

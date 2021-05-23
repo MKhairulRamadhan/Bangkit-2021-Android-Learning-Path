@@ -1,9 +1,9 @@
 package com.mkhairulramadhan.submission1moviecatalog
 
 import android.app.Application
-import com.mkhairulramadhan.submission1moviecatalog.core.di.databaseModule
-import com.mkhairulramadhan.submission1moviecatalog.core.di.networkModule
-import com.mkhairulramadhan.submission1moviecatalog.core.di.repositoryModule
+import com.mkhairulramadhan.core.di.databaseModule
+import com.mkhairulramadhan.core.di.networkModule
+import com.mkhairulramadhan.core.di.repositoryModule
 import com.mkhairulramadhan.submission1moviecatalog.di.useCaseModule
 import com.mkhairulramadhan.submission1moviecatalog.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
