@@ -1,12 +1,12 @@
 package com.mkhairulramadhan.submission1moviecatalog.view
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mkhairulramadhan.submission1moviecatalog.R
 import com.mkhairulramadhan.submission1moviecatalog.databinding.ActivityMainBinding
-import com.mkhairulramadhan.submission1moviecatalog.view.fragment.FavoriteFragment
 import com.mkhairulramadhan.submission1moviecatalog.view.fragment.MoviesFragment
 import com.mkhairulramadhan.submission1moviecatalog.view.fragment.TvShowFragment
 
@@ -40,8 +40,7 @@ class HomeActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.nav_fav -> {
-                val fragment = FavoriteFragment()
-                addFragment(fragment)
+                goFavoriteFragment()
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -55,5 +54,24 @@ class HomeActivity : AppCompatActivity() {
             .replace(R.id.fl_container, fragment, fragment.javaClass.simpleName)
             .commit()
     }
+
+    private fun goFavoriteFragment() {
+        val fragment = instantiateFavoriteFragment(namePath)
+        if (fragment != null) {
+            addFragment(fragment)
+        }
+    }
+
+    private fun instantiateFavoriteFragment(className: String): Fragment? {
+        return try {
+            Class.forName(className).newInstance() as Fragment
+        } catch (e: Exception) {
+            Toast.makeText(this, "Module not found", Toast.LENGTH_SHORT).show()
+            null
+        }
+    }
+
+    private val namePath: String
+        get() = "com.mkhairulramadhan.favorite.view.FavoriteFragment"
 
 }

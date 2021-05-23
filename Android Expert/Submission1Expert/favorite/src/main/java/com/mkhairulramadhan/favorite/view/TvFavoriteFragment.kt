@@ -1,4 +1,4 @@
-package com.mkhairulramadhan.submission1moviecatalog.view.fragment
+package com.mkhairulramadhan.favorite.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,7 +12,7 @@ import com.mkhairulramadhan.core.domain.model.TvModel
 import com.mkhairulramadhan.submission1moviecatalog.databinding.FragmentTvShowBinding
 import com.mkhairulramadhan.submission1moviecatalog.view.DetailMovieTvActivity
 import com.mkhairulramadhan.submission1moviecatalog.view.fragment.TvShowFragment.Companion.TYPE_TV
-import com.mkhairulramadhan.submission1moviecatalog.viewModel.FavoriteViewModel
+import com.mkhairulramadhan.favorite.viewModel.FavoriteViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class TvFavoriteFragment: Fragment() {

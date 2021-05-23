@@ -1,4 +1,4 @@
-package com.mkhairulramadhan.submission1moviecatalog.adapter
+package com.mkhairulramadhan.favorite.adapter
 
 import android.content.Context
 import androidx.annotation.StringRes
@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.mkhairulramadhan.submission1moviecatalog.R
-import com.mkhairulramadhan.submission1moviecatalog.view.fragment.MovieFavoriteFragment
-import com.mkhairulramadhan.submission1moviecatalog.view.fragment.TvFavoriteFragment
+import com.mkhairulramadhan.favorite.view.MovieFavoriteFragment
+import com.mkhairulramadhan.favorite.view.TvFavoriteFragment
 
 class PagerAdapter(private val context: Context, fragment: FragmentManager): FragmentPagerAdapter(fragment, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 

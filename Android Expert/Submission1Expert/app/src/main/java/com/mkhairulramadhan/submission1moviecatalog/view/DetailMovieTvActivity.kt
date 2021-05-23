@@ -7,11 +7,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.mkhairulramadhan.submission1moviecatalog.R
 import com.mkhairulramadhan.core.domain.model.MovieModel
 import com.mkhairulramadhan.core.domain.model.TvModel
 import com.mkhairulramadhan.core.valueObject.ResourceData
 import com.mkhairulramadhan.core.valueObject.StatusData
+import com.mkhairulramadhan.submission1moviecatalog.R
 import com.mkhairulramadhan.submission1moviecatalog.databinding.ActivityDetailMovieTvBinding
 import com.mkhairulramadhan.submission1moviecatalog.view.fragment.MoviesFragment.Companion.TYPE_MOVIE
 import com.mkhairulramadhan.submission1moviecatalog.view.fragment.TvShowFragment.Companion.TYPE_TV

@@ -1,4 +1,4 @@
-package com.mkhairulramadhan.submission1moviecatalog.viewModel
+package com.mkhairulramadhan.favorite.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

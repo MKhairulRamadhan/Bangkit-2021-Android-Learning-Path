@@ -1,4 +1,4 @@
-package com.mkhairulramadhan.submission1moviecatalog.view.fragment
+package com.mkhairulramadhan.favorite.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,7 +11,8 @@ import com.mkhairulramadhan.core.adapter.MoviesAdapter
 import com.mkhairulramadhan.core.domain.model.MovieModel
 import com.mkhairulramadhan.submission1moviecatalog.databinding.FragmentMoviesBinding
 import com.mkhairulramadhan.submission1moviecatalog.view.DetailMovieTvActivity
-import com.mkhairulramadhan.submission1moviecatalog.viewModel.FavoriteViewModel
+import com.mkhairulramadhan.submission1moviecatalog.view.fragment.MoviesFragment
+import com.mkhairulramadhan.favorite.viewModel.FavoriteViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MovieFavoriteFragment: Fragment() {

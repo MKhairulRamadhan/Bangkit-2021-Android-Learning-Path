@@ -1,7 +1,6 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.dynamic-feature'
     id 'kotlin-android'
-    id 'kotlin-parcelize'
     id 'kotlin-kapt'
 }
 
@@ -12,7 +11,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.mkhairulramadhan.submission1moviecatalog"
+        applicationId "com.mkhairulramadhan.favorite"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
@@ -20,12 +19,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
     buildTypes {
-        debug{
-            buildConfigField 'String', 'API_TOKEN', "\"6d3b5d87fff90c4cd594da0e61974684\""
-            buildConfigField 'String', 'BASE_API', "\"https://api.themoviedb.org/3/\""
-        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -38,14 +32,14 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
     buildFeatures {
         viewBinding = true
     }
-    dynamicFeatures = [':favorite']
 }
 
 dependencies {
     implementation project(":core")
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation project(":app")
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }

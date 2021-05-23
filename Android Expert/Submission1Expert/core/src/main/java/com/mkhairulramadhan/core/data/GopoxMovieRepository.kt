@@ -16,15 +16,6 @@ import kotlinx.coroutines.flow.map
 
 class GopoxMovieRepository(private val remoteDataSource: RemoteDataSource, private val localDataSource: LocalDataSource, private val executorApp: ExecutorApp) : IGopoxMovieRepository {
 
-    companion object{
-        @Volatile
-        private var instance: GopoxMovieRepository? = null
-        fun getInstance(remoteDataSource: RemoteDataSource, localDataSource: LocalDataSource, executorApp: ExecutorApp): GopoxMovieRepository =
-                instance ?: synchronized(this){
-                    instance ?: GopoxMovieRepository(remoteDataSource, localDataSource, executorApp)
-                }
-    }
-
     override fun getAllMovie(): Flow<ResourceData<List<MovieModel>>> {
         return object : NetworkBoundResource<List<MovieModel>, List<MovieDataItem>>(executorApp){
             override fun fromDBLoad(): Flow<List<MovieModel>> {
