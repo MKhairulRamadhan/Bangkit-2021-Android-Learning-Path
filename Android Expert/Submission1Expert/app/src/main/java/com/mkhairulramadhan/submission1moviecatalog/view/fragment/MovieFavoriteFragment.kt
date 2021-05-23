@@ -6,18 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mkhairulramadhan.submission1moviecatalog.core.adapter.MoviesAdapter
 import com.mkhairulramadhan.submission1moviecatalog.core.domain.model.MovieModel
 import com.mkhairulramadhan.submission1moviecatalog.databinding.FragmentMoviesBinding
 import com.mkhairulramadhan.submission1moviecatalog.view.DetailMovieTvActivity
 import com.mkhairulramadhan.submission1moviecatalog.viewModel.FavoriteViewModel
-import com.mkhairulramadhan.submission1moviecatalog.viewModel.ViewModelFactory
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class MovieFavoriteFragment: Fragment() {
     private lateinit var binding: FragmentMoviesBinding
-    private lateinit var viewModel: FavoriteViewModel
+    private val viewModel: FavoriteViewModel by viewModel()
     private lateinit var adapter: MoviesAdapter
 
     override fun onCreateView(
@@ -31,10 +30,6 @@ class MovieFavoriteFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        //viewModel
-        val factory = ViewModelFactory.getInstance(requireActivity())
-        viewModel = ViewModelProvider(this, factory)[FavoriteViewModel::class.java]
 
         //recyclerView
         binding.rvMovie.setHasFixedSize(true)

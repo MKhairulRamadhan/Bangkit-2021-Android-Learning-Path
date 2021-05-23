@@ -5,21 +5,18 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.mkhairulramadhan.submission1moviecatalog.R
-import com.mkhairulramadhan.submission1moviecatalog.core.data.local.entity.MovieEntity
-import com.mkhairulramadhan.submission1moviecatalog.core.data.local.entity.TvEntity
 import com.mkhairulramadhan.submission1moviecatalog.core.domain.model.MovieModel
 import com.mkhairulramadhan.submission1moviecatalog.core.domain.model.TvModel
-import com.mkhairulramadhan.submission1moviecatalog.databinding.ActivityDetailMovieTvBinding
 import com.mkhairulramadhan.submission1moviecatalog.core.valueObject.ResourceData
 import com.mkhairulramadhan.submission1moviecatalog.core.valueObject.StatusData
+import com.mkhairulramadhan.submission1moviecatalog.databinding.ActivityDetailMovieTvBinding
 import com.mkhairulramadhan.submission1moviecatalog.view.fragment.MoviesFragment.Companion.TYPE_MOVIE
 import com.mkhairulramadhan.submission1moviecatalog.view.fragment.TvShowFragment.Companion.TYPE_TV
 import com.mkhairulramadhan.submission1moviecatalog.viewModel.DetailViewModel
-import com.mkhairulramadhan.submission1moviecatalog.viewModel.ViewModelFactory
+import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.*
 
 class DetailMovieTvActivity : AppCompatActivity() {
@@ -30,7 +27,7 @@ class DetailMovieTvActivity : AppCompatActivity() {
     }
 
     private lateinit var binding: ActivityDetailMovieTvBinding
-    private lateinit var viewModel: DetailViewModel
+    private val viewModel: DetailViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,10 +36,6 @@ class DetailMovieTvActivity : AppCompatActivity() {
 
         //progressBar
         binding.progressBar.visibility = View.VISIBLE
-
-        //viewModel
-        val factory = ViewModelFactory.getInstance(this)
-        viewModel = ViewModelProvider(this, factory)[DetailViewModel::class.java]
 
         //collapse layour setting
         val toolbar = binding.toolbar

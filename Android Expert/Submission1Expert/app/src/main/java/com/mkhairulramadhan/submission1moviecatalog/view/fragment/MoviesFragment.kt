@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mkhairulramadhan.submission1moviecatalog.core.adapter.MoviesAdapter
 import com.mkhairulramadhan.submission1moviecatalog.core.domain.model.MovieModel
@@ -17,12 +16,12 @@ import com.mkhairulramadhan.submission1moviecatalog.view.DetailMovieTvActivity
 import com.mkhairulramadhan.submission1moviecatalog.view.DetailMovieTvActivity.Companion.EXTRA_ID
 import com.mkhairulramadhan.submission1moviecatalog.view.DetailMovieTvActivity.Companion.EXTRA_TYPE
 import com.mkhairulramadhan.submission1moviecatalog.viewModel.MovieTvViewModel
-import com.mkhairulramadhan.submission1moviecatalog.viewModel.ViewModelFactory
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class MoviesFragment : Fragment() {
 
     private lateinit var binding: FragmentMoviesBinding
-    private lateinit var viewModel: MovieTvViewModel
+    private val viewModel: MovieTvViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,10 +33,6 @@ class MoviesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        //viewModel
-        val factory = ViewModelFactory.getInstance(requireActivity())
-        viewModel = ViewModelProvider(this, factory)[MovieTvViewModel::class.java]
 
         //recyclerView
         binding.rvMovie.setHasFixedSize(true)

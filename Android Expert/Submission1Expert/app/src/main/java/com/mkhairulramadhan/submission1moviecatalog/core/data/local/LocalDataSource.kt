@@ -1,12 +1,11 @@
 package com.mkhairulramadhan.submission1moviecatalog.core.data.local
 
-import androidx.lifecycle.LiveData
 import com.mkhairulramadhan.submission1moviecatalog.core.data.local.entity.MovieEntity
 import com.mkhairulramadhan.submission1moviecatalog.core.data.local.entity.TvEntity
 import com.mkhairulramadhan.submission1moviecatalog.core.data.local.room.GopoxDao
 import kotlinx.coroutines.flow.Flow
 
-class LocalDataSource private constructor(private val gopoxDao: GopoxDao){
+class LocalDataSource (private val gopoxDao: GopoxDao){
 
     companion object{
         private var INSTANCE: LocalDataSource? = null
