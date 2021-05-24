@@ -3,19 +3,12 @@ package com.mkhairulramadhan.core.data.remote
 import android.util.Log
 import com.mkhairulramadhan.core.BuildConfig
 import com.mkhairulramadhan.core.retrofit.ServiceApi
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 
 class RemoteDataSource(private val apiRequest: ServiceApi) {
-
-    companion object{
-        @Volatile
-        private var instance: RemoteDataSource? = null
-        fun getInstance(apiRequest: ServiceApi): RemoteDataSource =
-                instance ?: synchronized(this){
-                    instance ?: RemoteDataSource(apiRequest)
-                }
-    }
 
     fun getAllMovie(): Flow<ApiResponse<List<MovieDataItem>>> {
         return flow {
@@ -31,7 +24,7 @@ class RemoteDataSource(private val apiRequest: ServiceApi) {
                 emit(ApiResponse.Error(e.toString()))
                 Log.e("RemoteDataSource", e.toString())
             }
-        }
+        }.flowOn(Dispatchers.IO)
     }
 
     fun getDetailMovie(id: Int): Flow<ApiResponse<MovieDataItem>>{
@@ -42,7 +35,7 @@ class RemoteDataSource(private val apiRequest: ServiceApi) {
             } catch (e: Exception) {
                 emit(ApiResponse.Error(e.toString()))
             }
-        }
+        }.flowOn(Dispatchers.IO)
     }
 
     fun getAllTv(): Flow<ApiResponse<List<TvDataItem>>>{
@@ -58,7 +51,7 @@ class RemoteDataSource(private val apiRequest: ServiceApi) {
             } catch (e: Exception){
                 emit(ApiResponse.Error(e.toString()))
             }
-        }
+        }.flowOn(Dispatchers.IO)
     }
 
     fun getDetailTv(id:Int): Flow<ApiResponse<TvDataItem>>{
@@ -69,7 +62,7 @@ class RemoteDataSource(private val apiRequest: ServiceApi) {
             } catch (e: Exception) {
                 emit(ApiResponse.Error(e.toString()))
             }
-        }
+        }.flowOn(Dispatchers.IO)
     }
 
 }

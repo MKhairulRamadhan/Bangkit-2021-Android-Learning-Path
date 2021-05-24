@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.mkhairulramadhan.core.R
-import com.mkhairulramadhan.core.domain.model.MovieModel
 import com.mkhairulramadhan.core.databinding.ListItemBinding
+import com.mkhairulramadhan.core.domain.model.MovieModel
 
 class MoviesAdapter: RecyclerView.Adapter<MoviesAdapter.ListViewHolder>() {
 
