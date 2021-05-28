@@ -9,10 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mkhairulramadhan.core.adapter.TvAdapter
 import com.mkhairulramadhan.core.domain.model.TvModel
+import com.mkhairulramadhan.favorite.viewModel.FavoriteViewModel
 import com.mkhairulramadhan.submission1moviecatalog.databinding.FragmentTvShowBinding
 import com.mkhairulramadhan.submission1moviecatalog.view.DetailMovieTvActivity
 import com.mkhairulramadhan.submission1moviecatalog.view.fragment.TvShowFragment.Companion.TYPE_TV
-import com.mkhairulramadhan.favorite.viewModel.FavoriteViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class TvFavoriteFragment: Fragment() {

@@ -9,10 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mkhairulramadhan.core.adapter.MoviesAdapter
 import com.mkhairulramadhan.core.domain.model.MovieModel
+import com.mkhairulramadhan.favorite.viewModel.FavoriteViewModel
 import com.mkhairulramadhan.submission1moviecatalog.databinding.FragmentMoviesBinding
 import com.mkhairulramadhan.submission1moviecatalog.view.DetailMovieTvActivity
 import com.mkhairulramadhan.submission1moviecatalog.view.fragment.MoviesFragment
-import com.mkhairulramadhan.favorite.viewModel.FavoriteViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MovieFavoriteFragment: Fragment() {

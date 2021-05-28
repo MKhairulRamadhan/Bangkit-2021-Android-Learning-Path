@@ -28,6 +28,4 @@ class ViewModelFactory private constructor(private val repository: GopoxMovieRep
             else -> throw Throwable("UnKnow ViewModel class: " + modelClass.name)
         }
     }
-
-
 }

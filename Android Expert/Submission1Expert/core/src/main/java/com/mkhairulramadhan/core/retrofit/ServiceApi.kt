@@ -9,14 +9,14 @@ import retrofit2.http.Query
 
 interface ServiceApi {
     @GET("movie/popular")
-    fun getAllMovie(@Query("api_key") apiKey: String?) : MovieTvResponse<MovieDataItem>
+    suspend fun getAllMovie(@Query("api_key") apiKey: String?) : MovieTvResponse<MovieDataItem>
 
     @GET("tv/popular")
-    fun getAllTv(@Query("api_key") apiKey: String?) : MovieTvResponse<TvDataItem>
+    suspend fun getAllTv(@Query("api_key") apiKey: String?) : MovieTvResponse<TvDataItem>
 
     @GET("movie/{movie_id}")
-    fun getDetailMovie(@Path("movie_id") movieId: Int?, @Query("api_key") apiKey: String?) : MovieDataItem
+    suspend fun getDetailMovie(@Path("movie_id") movieId: Int?, @Query("api_key") apiKey: String?) : MovieDataItem
 
     @GET("tv/{tv_id}")
-    fun getDetailTv(@Path("tv_id") seriesId: Int?, @Query("api_key") apiKey: String?) : TvDataItem
+    suspend fun getDetailTv(@Path("tv_id") seriesId: Int?, @Query("api_key") apiKey: String?) : TvDataItem
 }
