@@ -38,6 +38,9 @@ class AlarmReceiver : BroadcastReceiver() {
         val title = if (type.equals(TYPE_ONE_TIME, ignoreCase = true)) TYPE_ONE_TIME else TYPE_REPEATING
         val notifId = if (type.equals(TYPE_ONE_TIME, ignoreCase = true)) ID_ONETIME else ID_REPEATING
         showToast(context, title, message)
+        if (message != null) {
+            showAlarmNotification(context, title, message, notifId)
+        }
     }
 
     private fun showToast(context: Context, title: String, message: String?) {
